@@ -13,6 +13,10 @@ import { toast } from 'sonner'
 function AshaPageContent() {
     const { user, userId, isLoadingAuth } = useAuth()
 
+    console.log('ASHA USER:', user)
+    console.log('ASHA USER ID:', userId)
+    console.log('AUTH LOADING:', isLoadingAuth)
+
     // 🔹 Build queryProps like the doctor page
     const queryProps = {
         orgId: null,
@@ -21,7 +25,7 @@ function AshaPageContent() {
         requiredData: 'patients' as const,
     }
 
-    console.log('user asha:', user)
+    console.log('user asha:', queryProps)
 
     const {
         data: patients = [],

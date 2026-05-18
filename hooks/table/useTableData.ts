@@ -94,7 +94,7 @@ export const useTableData = ({ orgId, ashaId, enabled = true, requiredData }: Us
                 } else if (ashaId) {
                     patientsQuery = query(
                         collection(db, 'patients'),
-                        where('assignedAsha', '==', ashaId)
+                        where('ashaId', '==', ashaId)
                     )
                 } else if (requiredData === 'patients') {
                     patientsQuery = query(collection(db, 'patients'))

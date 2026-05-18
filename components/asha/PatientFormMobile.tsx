@@ -24,7 +24,7 @@ export default function PatientFormMobile({ patient }: { patient: Patient }) {
                 tabIndex={0}
                 onClick={() => setDialogOpen(true)}
                 onKeyDown={(e) => e.key === 'Enter' && setDialogOpen(true)}
-                className="w-full rounded-xl border border-border bg-card text-card-foreground shadow-sm cursor-pointer transition-all hover:shadow-md hover:border-primary/30 active:scale-[0.995]"
+                className="w-full overflow-hidden rounded-2xl border border-border/50 bg-card text-card-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl active:scale-[0.995] cursor-pointer"
             >
                 <PatientHeader
                     name={patient.name}

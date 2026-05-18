@@ -40,14 +40,14 @@ export function PatientHeader({
             {/* Avatar + Info */}
             <div className="flex items-center gap-3 min-w-0">
                 {/* Initials avatar */}
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/15 text-sm font-semibold text-primary select-none">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/15 text-base font-bold text-primary shadow-sm select-none">
                     {initials}
                 </div>
 
                 <div className="min-w-0">
                     {/* Name + badges */}
                     <div className="flex flex-wrap items-center gap-1.5">
-                        <p className="font-semibold text-foreground truncate">
+                        <p className="truncate text-sm font-semibold tracking-tight text-foreground sm:text-base">
                             {name || 'Unnamed Patient'}
                         </p>
                         {suspectedCase && (
@@ -61,7 +61,7 @@ export function PatientHeader({
                     </div>
 
                     {/* Address */}
-                    <p className="text-sm text-muted-foreground truncate mt-0.5">
+                    <p className="mt-1 truncate text-xs text-muted-foreground sm:text-sm">
                         {address || 'No address'}
                     </p>
 
@@ -71,13 +71,13 @@ export function PatientHeader({
                             {diseases.slice(0, 3).map((d) => (
                                 <span
                                     key={d}
-                                    className="rounded-md bg-destructive/10 px-1.5 py-0.5 text-xs text-destructive border border-destructive/15"
+                                    className="rounded-full border border-red-200 bg-red-50 px-2 py-1 text-[11px] font-medium text-red-600 dark:border-red-800 dark:bg-red-950/30"
                                 >
                                     {d}
                                 </span>
                             ))}
                             {diseases.length > 3 && (
-                                <span className="rounded-md bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
+                                <span className="rounded-full bg-muted px-2 py-1 text-[11px] font-medium text-muted-foreground">
                                     +{diseases.length - 3} more
                                 </span>
                             )}

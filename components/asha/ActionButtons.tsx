@@ -29,7 +29,7 @@ export function ActionButtons({
       <button
         type="button"
         onClick={onSave}
-        className="w-full flex-1 cursor-pointer rounded bg-blue-600 p-2 text-white disabled:opacity-50"
+        className="w-full flex-1 cursor-pointer rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-blue-700 hover:shadow-lg disabled:opacity-50"
         disabled={isSaving}
       >
         {isSaving ? 'Saving...' : 'Save Changes'}
@@ -39,7 +39,7 @@ export function ActionButtons({
         <AlertDialogTrigger asChild>
           <button
             type="button"
-            className="w-full flex-1 cursor-pointer rounded bg-green-600 p-2 text-white disabled:opacity-50"
+            className="w-full flex-1 cursor-pointer rounded-xl bg-green-600 px-4 py-3 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-green-700 hover:shadow-lg disabled:opacity-50"
             disabled={isSaving}
           >
             Done

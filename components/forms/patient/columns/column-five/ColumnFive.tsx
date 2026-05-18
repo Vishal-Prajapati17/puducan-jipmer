@@ -169,35 +169,51 @@ export function ColumnFive({ form, isAsha }: { form: any; isAsha?: boolean }) {
         <div className={clsx('flex w-full flex-col sm:border-l-2 md:pl-4 gap-4 md:w-1/2 lg:w-1/3', isAsha && 'md:w-2/3 lg:w-full px-2 mx-auto border-none')} >
             {/* --- Follow-Ups Section --- */}
             <div className="w-full space-y-3 pt-2">
-                <div className="flex items-center space-x-4">
-                    <Label className="text-base font-medium">Follow-ups </Label>
+                <div className="flex items-center justify-between gap-3">
+                    <div>
+                        <Label className="text-lg font-semibold text-foreground">
+                            Follow-ups
+                        </Label>
+                        <p className="text-xs text-muted-foreground">
+                            Track patient progress and remarks
+                        </p>
+                    </div>
+
                     <Button
                         type="button"
-                        size="icon"
-                        className='w-auto px-2 py-1'
                         onClick={() => setIsAddingFollowUp(!isAddingFollowUp)}
+                        className="h-9 rounded-full px-4 text-sm font-medium shadow-sm"
                     >
-                        <Plus className="h-5 w-5" /> Add
+                        <Plus className="mr-1 h-4 w-4" />
+                        Add Follow-up
                     </Button>
                 </div>
+
                 {isAddingFollowUp && (
-                    <div className="bg-muted/50 space-y-4 rounded-lg border p-3">
-                        <Label htmlFor="new-remark">Add New Remarks / FollowUp Details</Label>
+                    <div className="space-y-4 rounded-2xl border border-border bg-card p-4 shadow-sm">
+                        <Label
+                            htmlFor="new-remark"
+                            className="text-sm font-semibold text-foreground"
+                        >
+                            Add Follow-up Remarks
+                        </Label>
                         <Textarea
                             id="new-remark"
-                            placeholder="Enter follow-up details..."
+                            placeholder="Enter patient progress, treatment updates, or important remarks..."
                             value={newRemark}
                             onChange={(e) => setNewRemark(e.target.value)}
+                            className="min-h-[120px] resize-none rounded-xl border-muted-foreground/20 bg-background text-sm shadow-sm focus-visible:ring-1"
                         />
-                        <div className="flex justify-end gap-2">
+                       <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
                             <Button
                                 variant="outline"
                                 size="sm"
+                                className="rounded-lg"
                                 onClick={() => setIsAddingFollowUp(false)}
                             >
                                 Cancel
                             </Button>
-                            <Button size="sm" variant={'outline'} onClick={handleSaveNewFollowUp}>
+                            <Button size="sm" className="rounded-lg" onClick={handleSaveNewFollowUp}>
                                 Save Follow-up
                             </Button>
                         </div>
@@ -215,11 +231,11 @@ export function ColumnFive({ form, isAsha }: { form: any; isAsha?: boolean }) {
                             .map((followUp, idx) => (
                                 <div
                                     key={idx}
-                                    className="border-primary mb-2 border-l-2 pl-3 text-sm"
+                                    className="rounded-xl border border-border bg-card p-4 shadow-sm transition-colors hover:bg-muted/30"
                                 >
-                                    <p className="text-muted-foreground">{followUp?.remarks}</p>
+                                    <p className="text-sm leading-relaxed text-foreground">{followUp?.remarks}</p>
                                     {followUp?.date && (
-                                        <p className="text-muted-foreground text-xs">
+                                        <p className="mt-2 text-xs font-medium text-primary">
                                             {new Date(followUp.date).toLocaleString()}
                                         </p>
                                     )}
@@ -228,18 +244,23 @@ export function ColumnFive({ form, isAsha }: { form: any; isAsha?: boolean }) {
                     </div>
                 ) : (
                     !isAddingFollowUp && (
-                        <p className="text-muted-foreground py-2 text-center text-sm">
-                            No follow-ups yet.
-                        </p>
+                        <div className="rounded-xl border border-dashed border-border py-6 text-center">
+                            <p className="text-sm font-medium text-muted-foreground">
+                                No follow-ups added yet
+                            </p>
+                            <p className="mt-1 text-xs text-muted-foreground">
+                                Add remarks to track patient progress
+                            </p>
+                        </div>
                     )
                 )}
             </div>
 
             {/* --- GPS Section --- */}
-            <div className="space-y-3 rounded-xl border bg-muted/20 p-3">
+            <div className="space-y-4 rounded-2xl border border-border bg-card p-4 shadow-sm">
                 <div className="flex items-center justify-between gap-2">
                     <div>
-                        <Label className="text-sm font-medium">Patient Location</Label>
+                        <Label className="text-base font-semibold text-foreground">Patient Location</Label>
                     </div>
                     <Button
                         type="button"

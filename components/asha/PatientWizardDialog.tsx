@@ -114,16 +114,16 @@ export function PatientWizardDialog({
     return (
         <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
             {/* ✅ Removed default close button by not importing DialogTitle */}
-            <DialogContent className="w-[95vw] max-w-2xl h-[90vh] flex flex-col p-0 gap-0 overflow-hidden rounded-2xl border border-border bg-card text-card-foreground [&>button]:hidden">
+            <DialogContent className="w-[95vw] max-w-2xl h-[90vh] flex flex-col p-0 gap-0 overflow-hidden rounded-3xl border border-border/50 bg-card shadow-2xl text-card-foreground [&>button]:hidden">
                 {/* ^^^ Added [&>button]:hidden to hide default close button */}
 
                 {/* Header with custom close button only */}
                 <div className="flex items-start justify-between px-4 sm:px-6 pt-5 pb-4 border-b border-border shrink-0">
                     <div className="min-w-0">
-                        <h2 className="text-base font-semibold text-foreground truncate">
+                        <h2 className="truncate text-lg font-bold tracking-tight text-foreground sm:text-xl">
                             {patient.name || 'Unnamed Patient'}
                         </h2>
-                        <p className="text-xs text-muted-foreground mt-0.5 truncate">
+                        <p className="mt-1 truncate text-sm text-muted-foreground">
                             {patient.address}
                         </p>
                     </div>
@@ -138,9 +138,9 @@ export function PatientWizardDialog({
                 </div>
 
                 {/* Progress bar */}
-                <div className="h-1 w-full bg-muted shrink-0">
+                <div className="h-2 w-full bg-muted/50 shrink-0">
                     <div
-                        className="h-full bg-primary transition-all duration-300 ease-out"
+                        className="h-full rounded-full bg-gradient-to-r from-primary to-blue-500 transition-all duration-500 ease-out"
                         style={{ width: `${progress}%` }}
                     />
                 </div>
@@ -234,7 +234,7 @@ export function PatientWizardDialog({
                                         type="button"
                                         onClick={() => navigate('back')}
                                         disabled={isFirst}
-                                        className="flex items-center gap-1.5 rounded-lg border border-border px-3 sm:px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:opacity-30 disabled:cursor-not-allowed"
+                                        className="flex items-center gap-1.5 rounded-xl border border-border bg-background px-3 py-2.5 text-sm font-medium text-foreground shadow-sm transition-all hover:bg-muted disabled:cursor-not-allowed disabled:opacity-30"
                                     >
                                         <ChevronLeft size={16} />
                                         <span className="hidden sm:inline">Previous</span>
@@ -248,7 +248,7 @@ export function PatientWizardDialog({
                                         type="button"
                                         onClick={() => navigate('forward')}
                                         disabled={isLast}
-                                        className="flex items-center gap-1.5 rounded-lg bg-primary px-3 sm:px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-30 disabled:cursor-not-allowed"
+                                        className="flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-md transition-all hover:opacity-90 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-30"
                                     >
                                         <span className="hidden sm:inline">Next</span>
                                         <ChevronRight size={16} />
