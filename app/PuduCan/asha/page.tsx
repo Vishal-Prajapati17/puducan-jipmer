@@ -24,9 +24,10 @@ function AshaPageContent() {
         enabled: !isLoadingAuth && !!user?.email,
         requiredData: 'patients' as const,
     }
+    redesign-asha-followup-ui
 
     console.log('user asha:', queryProps)
-
+ main
     const {
         data: patients = [],
         isLoading,
@@ -37,7 +38,6 @@ function AshaPageContent() {
         isError: boolean
     }
 
-    console.log('Fetched patients for ASHA:', patients)
 
     if (isLoading || isLoadingAuth) {
         return (
