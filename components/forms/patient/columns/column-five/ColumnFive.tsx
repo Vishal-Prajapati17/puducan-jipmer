@@ -38,8 +38,13 @@ export function ColumnFive({ form, isAsha }: { form: any; isAsha?: boolean }) {
 
     useEffect(() => {
         if (!currentLocation?.lat || !currentLocation?.lng) return
-        setManualLat(String(currentLocation.lat))
-        setManualLng(String(currentLocation.lng))
+
+        const id = setTimeout(() => {
+            setManualLat(String(currentLocation.lat))
+            setManualLng(String(currentLocation.lng))
+        }, 0)
+
+        return () => clearTimeout(id)
     }, [currentLocation?.lat, currentLocation?.lng])
 
     const reverseGeocodeLocation = async (lat: number, lng: number) => {
@@ -166,12 +171,7 @@ export function ColumnFive({ form, isAsha }: { form: any; isAsha?: boolean }) {
     }
 
     return (
-        <div
-            className={clsx(
-                'flex w-full flex-col gap-4 sm:border-l-2 md:w-1/2 md:pl-4 lg:w-1/3',
-                isAsha && 'mx-auto border-none px-2 md:w-2/3 lg:w-full'
-            )}
-        >
+        <div className={clsx('flex w-full flex-col sm:border-l-2 md:pl-4 gap-4 md:w-1/2 lg:w-1/3', isAsha && 'md:w-2/3 lg:w-full px-2 mx-auto border-none')} >
             {/* --- Follow-Ups Section --- */}
             <div className="w-full space-y-3 pt-2">
                 <div className="flex items-center justify-between gap-3">
@@ -186,8 +186,6 @@ export function ColumnFive({ form, isAsha }: { form: any; isAsha?: boolean }) {
 
                     <Button
                         type="button"
-                        size="icon"
-                        className="w-auto px-2 p"
                         onClick={() => setIsAddingFollowUp(!isAddingFollowUp)}
                         className="h-9 rounded-full px-4 text-sm font-medium shadow-sm"
                     >
@@ -213,7 +211,6 @@ export function ColumnFive({ form, isAsha }: { form: any; isAsha?: boolean }) {
                         />
                        <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
                             <Button
-                                type="button"
                                 variant="outline"
                                 size="sm"
                                 className="rounded-lg"
